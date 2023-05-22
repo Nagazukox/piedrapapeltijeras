@@ -27,7 +27,6 @@ header h1 {
 .botones {
     display: flex;
     justify-content: space-around;
-    border: 1px solid    red;
     margin-right: 15%;
     margin-left: 15%;
     margin-top: 4.5%;
@@ -35,7 +34,21 @@ header h1 {
 
 button {
     box-shadow: none;
-    width: 350px;
+    width: 250px;
     height: 65px;
-    background-color: #5ABFA3;
+    background-color: #34967a;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+}
+
+.resultados {
+    display: flex;
+    justify-content: space-around;
+    margin-right: 26.5%;
+    margin-left: 25%;
+    margin-top: 5.6%;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
 }

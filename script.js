@@ -80,26 +80,68 @@ function game() {
 }
 */
 
+const puntos = document.querySelector('#puntos');
+const titulo = document.querySelector('#titulo');
+
+let puntuacion = puntos.innerText;
+let usuario = +puntuacion.charAt(0);
+let robot = +puntuacion.charAt(puntuacion.length - 1);
+
+function actResult(winner) {
+
+    if (winner == 1) {
+        titulo.textContent = "¡Empate! Inténtalo de nuevo...";
+    } else if (winner == 2) {
+        titulo.textContent = "¡Punto para ROBOT! Quién lo iba a decir...";
+        robot = robot + 1;
+    } else if (winner == 3) {
+        titulo.textContent = "Ganaste un punto... Bien... ¿Siguiente elección?";
+        usuario = usuario+1;
+    }
+
+    if (usuario == 5) {
+
+        puntos.textContent = 0 + " : " + 0;
+        titulo.textContent = "Felicidades... Has ganado los 5 puntos antes que ROBOT...";
+        usuario = 0;
+        robot = 0;
+    } else if (robot == 5) {
+        puntos.textContent = 0 + " : " + 0;
+        titulo.textContent = "¡Jajaja! Robot te ha ganado 5 puntos, perdedor.";
+        usuario = 0;
+        robot = 0;
+    } else {
+        puntos.textContent = usuario + " : " + robot;
+    }
+
+    
+}
+
 //Botones de juego
 const piedra = document.querySelector('#piedra');
 const papel = document.querySelector('#papel');
 const tijeras = document.querySelector('#tijeras');
 
+let result = 0;
+
 //Eventos de botón
 piedra.addEventListener("click", () => {
 
-    playRound("piedra",getComputerChoice());
+    result = playRound("piedra",getComputerChoice());
+    actResult(result);
 
 });
 
 papel.addEventListener("click", () => {
 
-    playRound("piedpapelra",getComputerChoice());
+    result = playRound("papel",getComputerChoice());
+    actResult(result);
 
 });
 
 tijeras.addEventListener("click", () => {
 
-    playRound("tijeras",getComputerChoice());
+    result = playRound("tijeras",getComputerChoice());
+    actResult(result);
 
 });
